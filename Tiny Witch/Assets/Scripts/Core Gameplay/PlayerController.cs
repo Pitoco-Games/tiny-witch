@@ -1,19 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using CoreGameplay.Interaction;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Movement movementController;
+    [SerializeField] private Interactor interactor;
 
     [Header("Controls")]
     [SerializeField] private InputActionAsset actionAsset;
     private InputAction moveAction;
-    private InputAction lookAction;
+    private InputAction interactAction;
 
     private Vector2 lastMoveInput;
     private Camera mainCamera;
+
+    public Vector2 LastMoveDirection {get; private set; }
+
+    public InputAction MoveAction => moveAction;
 
     private void Awake()
     {
@@ -21,6 +25,9 @@ public class PlayerController : MonoBehaviour
 
         InputActionMap playerActionMap = actionAsset.FindActionMap("Player");
         moveAction = playerActionMap.FindAction("Move");
+        interactAction = playerActionMap.FindAction("Interact");
+
+        interactAction.performed += Interact;
     }
 
     private void OnEnable()
@@ -31,10 +38,20 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         lastMoveInput = moveAction.ReadValue<Vector2>();
+        
+        if(lastMoveInput != Vector2.zero)
+        {
+            LastMoveDirection = lastMoveInput;
+        }
     }
 
     private void FixedUpdate()
     {
         movementController.Move(lastMoveInput);
+    }
+
+    private void Interact(InputAction.CallbackContext context)
+    {
+        interactor.Interact();
     }
 }
