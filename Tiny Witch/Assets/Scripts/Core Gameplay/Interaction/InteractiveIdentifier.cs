@@ -64,7 +64,7 @@ namespace CoreGameplay.Interaction
             thisTransform = transform;
             Vector2 direction = playerController.LastMoveDirection == Vector2.zero ? Vector2.down : playerController.LastMoveDirection;
 
-            Gizmos.color = Color.cyan;
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(GetDetectionRadiusCenter(direction), detectionRadius);
         }
         #endregion
