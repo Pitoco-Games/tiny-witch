@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056f76f1f2ebf7f43a4dc76d907a0b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 3362187987753586632, guid: 37caf154fedb1fe4c9452e208dfdcc42, type: 3}
   mapChangeDetectors:
   - {fileID: 3314104248362813836}
 --- !u!1001 &3006339285238666621
