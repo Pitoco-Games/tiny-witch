@@ -9,7 +9,7 @@ namespace CoreGameplay.MapNavigation
         [SerializeField] private Transform positionToSpawn;
 
         public string Id => mapChangeData.name;
-        public Transform PositionToSpawn => positionToSpawn;
+        public Vector2 PositionToSpawn => positionToSpawn.position;
 
         private Action<MapChangeData> OnPlayerDetected;
 
