@@ -9,4 +9,9 @@ public class Movement : MonoBehaviour
     {
         rigidbody2D.linearVelocity = direction * moveSpeed * Time.deltaTime;
     }
+
+    public void SetPosition(Vector2 position)
+    {
+        rigidbody2D.position = position;
+    }
 }
