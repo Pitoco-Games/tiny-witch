@@ -1,57 +1,61 @@
-using CoreGameplay.Interaction;
+using CoreGameplay.Controls.Interaction;
+using CoreGameplay.Controls.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+namespace CoreGameplay.Controls
 {
-    [SerializeField] private Movement movementController;
-    [SerializeField] private Interactor interactor;
-
-    [Header("Controls")]
-    [SerializeField] private InputActionAsset actionAsset;
-    private InputAction moveAction;
-    private InputAction interactAction;
-
-    private Vector2 lastMoveInput;
-    private Camera mainCamera;
-
-    public Vector2 LastMoveDirection {get; private set; }
-
-    public InputAction MoveAction => moveAction;
-
-    private void Awake()
+    public class PlayerController : MonoBehaviour
     {
-        mainCamera = Camera.main;
+        [SerializeField] private MovementController movementController;
+        [SerializeField] private Interactor interactor;
 
-        InputActionMap playerActionMap = actionAsset.FindActionMap("Player");
-        moveAction = playerActionMap.FindAction("Move");
-        interactAction = playerActionMap.FindAction("Interact");
+        [Header("Controls")]
+        [SerializeField] private InputActionAsset actionAsset;
+        private InputAction moveAction;
+        private InputAction interactAction;
 
-        interactAction.performed += Interact;
-    }
+        private Vector2 lastMoveInput;
+        private Camera mainCamera;
 
-    private void OnEnable()
-    {
-        actionAsset.Enable();
-    }
+        public Vector2 LastMoveDirection { get; private set; }
 
-    private void Update()
-    {
-        lastMoveInput = moveAction.ReadValue<Vector2>();
-        
-        if(lastMoveInput != Vector2.zero)
+        public InputAction MoveAction => moveAction;
+
+        private void Awake()
         {
-            LastMoveDirection = lastMoveInput;
+            mainCamera = Camera.main;
+
+            InputActionMap playerActionMap = actionAsset.FindActionMap("Player");
+            moveAction = playerActionMap.FindAction("Move");
+            interactAction = playerActionMap.FindAction("Interact");
+
+            interactAction.performed += Interact;
         }
-    }
 
-    private void FixedUpdate()
-    {
-        movementController.Move(lastMoveInput);
-    }
+        private void OnEnable()
+        {
+            actionAsset.Enable();
+        }
 
-    private void Interact(InputAction.CallbackContext context)
-    {
-        interactor.Interact();
+        private void Update()
+        {
+            lastMoveInput = moveAction.ReadValue<Vector2>();
+
+            if (lastMoveInput != Vector2.zero)
+            {
+                LastMoveDirection = lastMoveInput;
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            movementController.Move(lastMoveInput);
+        }
+
+        private void Interact(InputAction.CallbackContext context)
+        {
+            interactor.Interact();
+        }
     }
 }

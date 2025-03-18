@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace CoreGameplay.Controls
+namespace CoreGameplay.Controls.Movement
 {
-    public class Movement : MonoBehaviour
+    public class MovementController : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D rigidbody2D;
         [SerializeField] private float moveSpeed;

@@ -2,9 +2,9 @@ using UnityEngine;
 using Utils;
 using Utils.Save;
 
-namespace CoreGameplay.Controls
+namespace CoreGameplay.Controls.Movement
 {
-    public class PlayerMovement : Movement, IUpdatesSave
+    public class PlayerMovementController : MovementController, IUpdatesSave
     {
         private PlayerLocationSaveData locationSaveData;
 

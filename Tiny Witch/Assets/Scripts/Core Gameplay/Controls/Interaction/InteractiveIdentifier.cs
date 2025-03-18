@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine.InputSystem;
 using UnityEngine;
-using UnityEditor;
+using CoreGameplay.Controls;
 
-namespace CoreGameplay.Interaction
+namespace CoreGameplay.Controls.Interaction
 {
     public class InteractiveIdentifier : MonoBehaviour
     {

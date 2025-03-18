@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CoreGameplay.Interaction
+namespace CoreGameplay.Controls.Interaction
 {
     public class DialogueInteractable : MonoBehaviour, IInteractable
     {
