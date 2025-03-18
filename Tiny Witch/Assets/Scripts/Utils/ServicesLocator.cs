@@ -17,9 +17,9 @@ namespace Utils
             registeredServices.Remove(typeof(T));
         }
 
-        public static object Get<T>()
+        public static T Get<T>()
         {
-            return registeredServices[typeof(T)];
+            return (T) registeredServices[typeof(T)];
         }
     }
 }
