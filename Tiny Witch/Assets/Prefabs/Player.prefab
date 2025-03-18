@@ -135,7 +135,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.6539593, g: 0, b: 1, a: 1}
   m_FlipX: 0
@@ -156,7 +156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 218047929353758113}
-  - component: {fileID: 7827814690462449107}
+  - component: {fileID: 2421436994892952815}
   - component: {fileID: 3419968980078497195}
   - component: {fileID: 4680592958415117485}
   - component: {fileID: 9139791272146879386}
@@ -185,7 +185,7 @@ Transform:
   - {fileID: 4323575368424266023}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7827814690462449107
+--- !u!114 &2421436994892952815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3362187987753586632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93eb50adbd75e164abe22159f90779ac, type: 3}
+  m_Script: {fileID: 11500000, guid: d62c8174bc05a904d82ef9c379778087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 4680592958415117485}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ce0a400896e48499a8dcfe5b57a327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementController: {fileID: 7827814690462449107}
+  movementController: {fileID: 2421436994892952815}
   interactor: {fileID: 1155394613119483959}
   actionAsset: {fileID: -944628639613478452, guid: f2af1b920f186ef4a8153a993c8f5f16, type: 3}
 --- !u!50 &4680592958415117485
