@@ -10,7 +10,7 @@ namespace CoreGameplay.Controls.Movement
 
         private void Awake()
         {
-            locationSaveData = (PlayerLocationSaveData)ServicesLocator.Get<SaveService>().TryGetSavedData<PlayerLocationSaveData>();
+            locationSaveData = (PlayerLocationSaveData)ServicesLocator.Get<SaveService>().GetSavedData<PlayerLocationSaveData>();
             locationSaveData.AddListenerToSaveUpdateRequest(UpdateSaveData);
         }
 

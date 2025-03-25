@@ -34,7 +34,7 @@ namespace Utils.Save
             }
         }
 
-        public SaveData TryGetSavedData<T>() where T : SaveData, new()
+        public SaveData GetSavedData<T>() where T : SaveData, new()
         {
             SaveData data = null;
             if(!typeToSaveInstanceCacheDict.TryGetValue(typeof(T), out data))

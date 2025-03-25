@@ -19,7 +19,7 @@ namespace CoreGameplay.MapNavigation
         private void Awake()
         {
             SaveService saveService = ServicesLocator.Get<SaveService>();
-            locationSaveData = (PlayerLocationSaveData)saveService.TryGetSavedData<PlayerLocationSaveData>();
+            locationSaveData = (PlayerLocationSaveData)saveService.GetSavedData<PlayerLocationSaveData>();
 
             locationSaveData.AddListenerToSaveUpdateRequest(UpdateSaveData);
 
