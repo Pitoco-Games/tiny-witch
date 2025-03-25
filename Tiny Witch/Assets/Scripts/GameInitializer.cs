@@ -1,3 +1,4 @@
+using CoreGameplay.Inventory;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utils;
@@ -5,10 +6,13 @@ using Utils.Save;
 
 public class GameInitializer : MonoBehaviour
 {
-    private void Awake()
+    private async void Awake()
     {
-        SaveService saveService = new SaveService();
+        var saveService = new SaveService();
         ServicesLocator.Register<SaveService>(saveService);
+
+        var playerInventoryService = await PlayerInventoryService.Create(saveService);
+        ServicesLocator.Register<PlayerInventoryService>(playerInventoryService);
 
         LoadPlayerSavedLocation(saveService);
     }
@@ -18,7 +22,7 @@ public class GameInitializer : MonoBehaviour
         const string NoSaveStartingSceneName = "Region1";
         PlayerLocationSaveData locationSavedData;
 
-        locationSavedData = (PlayerLocationSaveData) saveService.TryGetSavedData<PlayerLocationSaveData>();
+        locationSavedData = (PlayerLocationSaveData) saveService.GetSavedData<PlayerLocationSaveData>();
         string sceneToLoad = locationSavedData.HasSavedData ? locationSavedData.lastVisitedLocationSceneName : NoSaveStartingSceneName;
 
         SceneManager.LoadScene(sceneToLoad);
