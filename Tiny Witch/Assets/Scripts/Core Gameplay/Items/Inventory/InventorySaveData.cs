@@ -14,9 +14,9 @@ namespace CoreGameplay.Items.Inventory
             {
                 itemAmounts.Remove(currentItemAmount.Item.Id);
             }
-            else if (itemAmounts.TryGetValue(currentItemAmount.Item.Id, out int amount))
+            else if (itemAmounts.ContainsKey(currentItemAmount.Item.Id))
             {
-                amount = currentItemAmount.Amount;
+                itemAmounts[currentItemAmount.Item.Id] = currentItemAmount.Amount;
             }
             else
             {
