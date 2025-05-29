@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using Utils;
 using Utils.Save;
 
-namespace CoreGameplay.Inventory
+namespace CoreGameplay.Items.Inventory
 {
     public class InventorySaveData : SaveData
     {
-        public Dictionary<string, int> itemAmounts;
+        public Dictionary<string, int> itemAmounts = new();
 
         public void UpdateInventorySaveData(ItemAmount currentItemAmount)
         {

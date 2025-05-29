@@ -1,4 +1,4 @@
-namespace CoreGameplay.Inventory
+namespace CoreGameplay.Items
 {
     public class ItemAmount
     {

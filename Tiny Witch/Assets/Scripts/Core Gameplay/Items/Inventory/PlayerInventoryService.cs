@@ -1,8 +1,10 @@
+using CoreGameplay.Items;
 using Cysharp.Threading.Tasks;
-using UnityEngine.AddressableAssets;
+using System.Collections.Generic;
+using System.Linq;
 using Utils.Save;
 
-namespace CoreGameplay.Inventory
+namespace CoreGameplay.Items.Inventory
 {
     public class PlayerInventoryService : Inventory
     {
@@ -13,14 +15,14 @@ namespace CoreGameplay.Inventory
             var inventorySaveData = saveService.GetSavedData<InventorySaveData>() as InventorySaveData;
             var playerInventory = new PlayerInventoryService(inventorySaveData);
 
-            await Addressables.LoadAssetsAsync<Item>(inventorySaveData.itemAmounts.Values, OnItemLoaded);
+            List<Item> items = await ItemAddressablesProvider.LoadItemAddressables(inventorySaveData.itemAmounts.Keys.ToArray());
+            foreach(Item item in items)
+            {
+                int savedItemAmount = inventorySaveData.itemAmounts[item.Id];
+                playerInventory.AddItem(item, savedItemAmount);
+            }
 
             return playerInventory;
-
-            void OnItemLoaded(Item item)
-            {
-                playerInventory.AddItem(item);
-            }
         }
         
         public PlayerInventoryService(InventorySaveData saveData)

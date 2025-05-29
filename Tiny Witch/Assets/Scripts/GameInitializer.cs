@@ -1,4 +1,4 @@
-using CoreGameplay.Inventory;
+using CoreGameplay.Items.Inventory;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utils;
@@ -19,6 +19,7 @@ public class GameInitializer : MonoBehaviour
 
     private void LoadPlayerSavedLocation(SaveService saveService)
     {
+        //TODO: find more permanent solution to this
         const string NoSaveStartingSceneName = "Region1";
         PlayerLocationSaveData locationSavedData;
 
