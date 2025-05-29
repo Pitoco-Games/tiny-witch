@@ -29,7 +29,7 @@ namespace CoreGameplay.Items
                     addressableKeys[i] = GetAddressableKey(names[i]);
                 }
 
-                await Addressables.LoadAssetsAsync<Item>(addressableKeys, OnItemLoaded);
+                await Addressables.LoadAssetsAsync<Item>(addressableKeys, OnItemLoaded, Addressables.MergeMode.Union);
             }
 
             return items;
